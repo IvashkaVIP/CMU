@@ -1,13 +1,16 @@
 import { Container, Title, StyledImage } from './FirstPage.styled';
-import example from '../../assets/example.png';
+import { SignupLoginButtons } from '../../components';
+// import example from '../../assets/example.png';
 
-const FirstPage = () => {
+export const FirstPage = () => {
   return (
     <Container>
-      <Title>First Page</Title>
-      <StyledImage src={example} alt="Example" />
+      <SignupLoginButtons></SignupLoginButtons>
+      {/* <Title>First Page</Title> */}
+      {/* <StyledImage src={example} alt="Example" /> */}
+
     </Container>
   );
 };
 
-export default FirstPage;
+

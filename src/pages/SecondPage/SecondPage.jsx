@@ -1,6 +1,6 @@
 import { Container, Block, Title, StyledLink } from './SecondPage.styled';
 
-const SecondPage = () => {
+export const SecondPage = () => {
   return (
     <Container>
       <Block>
@@ -10,5 +10,3 @@ const SecondPage = () => {
     </Container>
   );
 };
-
-export default SecondPage;

@@ -1,7 +1,6 @@
 import { Title } from './HalfPage.styled';
 
-const HalfPage = () => {
+export const HalfPage = () => {
   return <Title>Half Page</Title>;
 };
 
-export default HalfPage;

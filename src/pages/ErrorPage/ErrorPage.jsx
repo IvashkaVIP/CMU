@@ -1,6 +1,6 @@
 import { Container, Title } from './ErrorPage.styled';
 
-const ErrorPage = () => {
+export const ErrorPage = () => {
   return (
     <Container>
       <Title>404</Title>
@@ -8,4 +8,3 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
