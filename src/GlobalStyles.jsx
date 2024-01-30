@@ -4,11 +4,11 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
 
  :root {
-    --form-border-color: red;
-    --normal-button-color: #f9a8a8;
+    --form-border-color: #00baff;
+    --normal-button-color: #000000;
     --hover-button-color: red;
-    --placeholder-input-color: #8A8A89;
-    --dark-text-color: #ff4800;
+    --placeholder-input-color: #378289;
+    --dark-text-color: #00f7ff;
 
 
     --light-text-color: #ffffff;    
@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background-color: var(--background-color);
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
@@ -43,7 +43,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-}
+} */
 h1,
 h2,
 h3,

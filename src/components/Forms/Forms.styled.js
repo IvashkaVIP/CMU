@@ -9,11 +9,13 @@ text-align: center;
 `
 
 export const Input = styled.input`
+  height: 25px;
   width: 100%;
   margin-bottom: 5px;
   padding: 2px 5px;
   font-size: 10px;
   text-align: center;
+  background: transparent;
   border: 1px solid var(--form-border-color);
   border-radius: 5px;
   &:hover, &:focus {
