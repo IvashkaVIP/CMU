@@ -29,6 +29,7 @@ export const RegistrationForm = () => {
     <Input type="text" name="user" placeholder="user name" />
     <Input type="text" name="email" placeholder="example@mail.ua" />
     <Input type="password" name="password" placeholder="********" />
-    <Button type="submit">Sign Up</Button>
+      <Button type="submit">Sign Up</Button>
+      <Button type="reset">Reset</Button>
   </Form>)
 };

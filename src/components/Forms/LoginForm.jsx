@@ -27,6 +27,7 @@ export const LoginForm = () => {
       <Input type="text" name="login" placeholder="example@mail.ua" />
       <Input type="password" name="password" placeholder="********" />
       <Button type="submit">Log In</Button>
+      <Button type="reset">Reset</Button>
     </Form>
   );
 };

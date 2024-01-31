@@ -5,6 +5,7 @@ export const DualButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  
 `;
 
 export const Button = styled.button`
@@ -12,6 +13,7 @@ export const Button = styled.button`
   background-color: ${({ $isActive }) =>
     $isActive ? 'var(--hover-button-color)' : 'var(--normal-button-color)'};
   color: #ffffff;
+
   border: 1px solid aqua;
   border-radius: ${({ $isFirst }) =>
     $isFirst ? '14px 0 0 14px' : '0 14px 14px 0'};
@@ -20,5 +22,12 @@ export const Button = styled.button`
   &:hover {
     background-color: var(--hover-button-color);
     border: 1px solid white;
+    border-color: #ffffff;
+    box-shadow:
+      0 0 5px #00baff,
+      0 0 10px #00baff,
+      0 0 20px #00baff,
+      0 0 40px #00baff,
+      0 0 80px #00baff;
   }
 `;
