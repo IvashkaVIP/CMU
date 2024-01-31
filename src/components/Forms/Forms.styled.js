@@ -12,8 +12,8 @@ text-align: center;
 export const Input = styled.input`
   height: 40px;
   width: 100%;
-  margin-bottom: 15px;
-  padding: 5px 10px;
+  margin-bottom: 25px;
+  padding: 25px 10px;
   font-size: 18px;
   text-align: center;
   caret-color: aqua;

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { shadow } from '../../GlobalStyles';
 
 export const DualButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   
 `;
 
@@ -23,11 +24,6 @@ export const Button = styled.button`
     background-color: var(--hover-button-color);
     border: 1px solid white;
     border-color: #ffffff;
-    box-shadow:
-      0 0 5px #00baff,
-      0 0 10px #00baff,
-      0 0 20px #00baff,
-      0 0 40px #00baff,
-      0 0 80px #00baff;
+    box-shadow:${shadow};
   }
 `;
