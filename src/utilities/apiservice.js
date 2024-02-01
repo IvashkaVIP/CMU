@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = `http://127.0.0.1:8000/`;
+const BASE_URL = `https://cmu-cmuproject.koyeb.app/`;
 
 export const signup = async ({ username, email, password }) => {  
   try {
     const resp = await axios.post(
-      `${BASE_URL}api/auth/signup`,
+      `${BASE_URL}auth/signup`,
       {
         username: username,
         email: email,
@@ -30,7 +30,7 @@ export const login = async ({ username, password }) => {
     try {
         const resp = await axios
             .post(
-                `${BASE_URL}api/auth/login`,
+                `${BASE_URL}auth/login`,
                 {
                     username: username,
                     password: password,

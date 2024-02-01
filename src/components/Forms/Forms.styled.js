@@ -37,8 +37,13 @@ export const Input = styled.input`
   &:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
     background-color: #000000;
-    color: aqua !important;
+     -webkit-text-fill-color: aqua;
+    
   }
+
+  
+
+
 
   &:-moz-autofill,
   &:-moz-autofill:hover,
