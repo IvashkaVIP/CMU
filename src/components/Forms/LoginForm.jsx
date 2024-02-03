@@ -5,18 +5,19 @@ import { login } from "../../utilities/apiservice";
 export const LoginForm = () => {
   // const dispatch = useDispatch();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     const loginValue = evt.target.elements.login.value;
     const password = evt.target.elements.password.value;
 
     try {
       
-      const LoginAct = login({ username: loginValue, password: password });
+      const loginApi = await login({ username: loginValue, password: password });
       // const resp = dispatch(
       //   LoginAct
       // );
       // console.log(resp); 
+      console.log(loginApi);
     } catch (error) {
       console.error("Login error:", error);      
     }
