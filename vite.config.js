@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react(), svgr()],
   build: {
     rollupOptions: {
-      external: ['redux-persist/integration/react'],
+      external: /^redux-persist\//, // Используем регулярное выражение для external
     },
   },
   resolve: {
