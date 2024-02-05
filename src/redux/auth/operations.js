@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/";
+const BASE_URL = `https://cmu-cmuproject.koyeb.app/`;
+
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
@@ -17,11 +18,11 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { name, email, password }
  */
-export const register = createAsyncThunk(
-  "api/auth/signup",
+export const signup = createAsyncThunk(
+  "auth/signup",
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post("api/auth/signup", credentials, {
+      const res = await axios.post(`${BASE_URL}auth/signup`, credentials, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,10 +41,10 @@ export const register = createAsyncThunk(
  * body: { email, password }
  */
 export const logIn = createAsyncThunk(
-  "api/auth/login",
+  "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post("api/auth/login", credentials, {
+      const res = await axios.post(`${BASE_URL}auth/login`, credentials, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },

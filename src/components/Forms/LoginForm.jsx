@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { Form, Input, Button } from "./Forms.styled";
 import { login } from "../../utilities/apiservice";
+import { logIn } from "../../redux/auth/operations";
 import { Error } from "../index";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('')
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -16,13 +17,10 @@ export const LoginForm = () => {
     if (!(loginValue && password)) {setErrorMessage("Hello, Mudick!"); return}    
 
     try {
-      
-      const loginApi = await login({ username: loginValue, password: password });
-      // const resp = dispatch(
-      //   LoginAct
-      // );
-      // console.log(resp); 
-      console.log(loginApi);
+      const resp = await dispatch(
+        logIn({ username: loginValue, password: password })
+      );
+      console.log(resp);
     } catch (error) {
       console.error("Login error:", error);      
     }
