@@ -17,15 +17,14 @@ export const Error= ({ resetError, errorMessage })=>{
       {isVisible && (
         <div
           style={{
-            flex: 1,
             padding: 16,
             justifyContent: 'center',
             alignItems: 'center',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            marginLeft: -140,
-            width: 280,
+            // position: 'absolute',
+            // top: '50%',
+            // left: '50%',
+            // marginLeft: -140,
+            maxWidth: 400,
             backgroundColor: 'red',
             borderRadius: 25,
             color: 'white',
@@ -36,10 +35,12 @@ export const Error= ({ resetError, errorMessage })=>{
           }}
         >
           {errorMessage}
-          {'\n'}
-          {'\n'} probably wrong login or password
-          {'\n'}
-          {'\n'} all fields must be filled in
+          <br />
+          <br />
+          probably wrong login or password
+          <br />
+          <br />
+          all fields must be filled in
         </div>
       )}
     </>

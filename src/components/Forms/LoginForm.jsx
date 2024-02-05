@@ -1,9 +1,11 @@
+import { useState } from "react"
 import { Form, Input, Button } from "./Forms.styled";
 import { login } from "../../utilities/apiservice";
 import { Error } from "../index";
 // import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
+  const [errorMessage, setErrorMessage] = useState('')
   // const dispatch = useDispatch();
 
   const handleSubmit = async (evt) => {
@@ -11,9 +13,7 @@ export const LoginForm = () => {
     const loginValue = evt.target.elements.login.value;
     const password = evt.target.elements.password.value;
 
-    // if (!(loginValue && password)) Error(() => { }, "Hello World!")
-    
-    console.log(!(loginValue && password));
+    if (!(loginValue && password)) {setErrorMessage("Hello, Mudick!"); return}    
 
     try {
       
@@ -29,13 +29,20 @@ export const LoginForm = () => {
   };
 
   return (
-    
     <Form onSubmit={handleSubmit}>
-
-      <Input type="text" name="login" placeholder="example@mail.ua" />
-      <Input type="password" name="password" placeholder="********" />
-      <Button type="submit">Log In</Button>
-      <Button type="reset">Reset</Button>
+      {errorMessage ? (
+        <Error
+          resetError={() => setErrorMessage('')}
+          errorMessage={errorMessage}
+        />
+      ) : (
+        <>
+          <Input type="text" name="login" placeholder="example@mail.ua" />
+          <Input type="password" name="password" placeholder="********" />
+          <Button type="submit">Log In</Button>
+          <Button type="reset">Reset</Button>{' '}
+        </>
+      )}
     </Form>
   );
 };

@@ -20,8 +20,8 @@ export const signup = async ({ username, email, password }) => {
     return   resp;
   } catch (error) {
     console.error("Login Error: ", {
-      code: error.response.status,
-      data: error.response.data.detail,
+      code: error.response?.status,
+      data: error.response?.data.detail,
     });
   }
 };
