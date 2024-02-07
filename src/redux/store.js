@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { errorReducer } from './error/slice';
+import { profileReducer } from './profile/slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -19,12 +20,11 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-export const rootReducer = combineReducers(
-  {
-    isError: errorReducer,
-    auth: persistReducer(authPersistConfig, authReducer),
-  }
-);
+export const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
+  profile: profileReducer,
+  isError: errorReducer,
+});
 
 export const store = configureStore({
   reducer: rootReducer,

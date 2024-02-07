@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { shadow } from '../../GlobalStyles';
 
 export const Container = styled.div`
   display: flex;
@@ -9,10 +10,5 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   color: #ffffff;
-  text-shadow:
-    0 0 5px #00baff,
-    0 0 10px #00baff,
-    0 0 20px #00baff,
-    0 0 40px #00baff,
-    0 0 80px #00baff;
+  text-shadow: ${shadow};    
 `;

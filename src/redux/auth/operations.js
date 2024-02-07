@@ -21,6 +21,7 @@ const clearAuthHeader = () => {
 export const signup = createAsyncThunk(
   "auth/signup",
   async (credentials, thunkAPI) => {
+    console.log(credentials);
     try {
       const res = await axios.post(`${BASE_URL}auth/signup`, credentials, {
         headers: {

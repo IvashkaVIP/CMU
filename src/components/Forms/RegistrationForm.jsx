@@ -1,14 +1,15 @@
 import {useState} from "react"
 import { Form, Input, Button } from "./Forms.styled";
-import { signup } from "../../utilities/apiservice";
+// import { signup } from "../../utilities/apiservice";
 import {Error} from "../../components"
-
-// import { useDispatch } from "react-redux";
-// import { signup } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
+import { signup } from "../../redux/auth/operations";
+import { useHistory } from 'react-router-dom';
 
 export const RegistrationForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();  
+  const history = useHistory();
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();    
@@ -18,10 +19,9 @@ export const RegistrationForm = () => {
     
     if (!(email && password && username)) { setErrorMessage('Hello, Mudick!');  return};
     
-    const resp = await signup({ username: username, email: email, password: password });
-    console.log (resp?.data)
-
-    // dispatch(register({ UserName: username, Email: email, Password: password }));
+    // signup({ username: username, email: email, password: password });   
+    dispatch(signup({ UserName: username, Email: email, Password: password }));    
+    history.push('/ProfilePage');
 
   };
  

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Form, Input, Button } from "./Forms.styled";
-import { login } from "../../utilities/apiservice";
+// import { login } from "../../utilities/apiservice";
 import { logIn } from "../../redux/auth/operations";
 import { Error } from "../index";
 import { useDispatch } from "react-redux";
@@ -15,15 +15,8 @@ export const LoginForm = () => {
     const password = evt.target.elements.password.value;
 
     if (!(loginValue && password)) {setErrorMessage("Hello, Mudick!"); return}    
-
-    try {
-      const resp = await dispatch(
-        logIn({ username: loginValue, password: password })
-      );
-      console.log(resp);
-    } catch (error) {
-      console.error("Login error:", error);      
-    }
+ 
+ dispatch(logIn({ username: loginValue, password: password }));
   };
 
   return (
