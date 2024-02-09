@@ -2,14 +2,16 @@ import {useState} from "react"
 import { Form, Input, Button } from "./Forms.styled";
 // import { signup } from "../../utilities/apiservice";
 import {Error} from "../../components"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/auth/operations";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { selectIsError } from "../../redux/auth/selectors";
 
 export const RegistrationForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();  
-  const history = useHistory();
+  const navigate = useNavigate();  
+  const isError = useSelector(selectIsError);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();    
@@ -20,8 +22,13 @@ export const RegistrationForm = () => {
     if (!(email && password && username)) { setErrorMessage('Hello, Mudick!');  return};
     
     // signup({ username: username, email: email, password: password });   
-    dispatch(signup({ UserName: username, Email: email, Password: password }));    
-    history.push('/ProfilePage');
+    const resp = await dispatch(signup({ username: username, email: email, password: password }));            
+    console.log(resp);
+
+    console.log(isError);
+    if (isError) setErrorMessage(isError);
+
+    // navigate('/profile', { replace: true });
 
   };
  
