@@ -31,7 +31,7 @@ export const signup = createAsyncThunk(
       // console.log(error.response.status); // Код состояния HTTP      
       
       return thunkAPI.rejectWithValue(
-        error.response?.data?.detail || 'Unknown error'
+        {code: error.response.status, text: error.response?.data?.detail || 'Unknown error'}
       );
     }
   }

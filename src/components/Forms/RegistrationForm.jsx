@@ -6,12 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/auth/operations";
 import { useNavigate } from 'react-router-dom';
 import { selectIsError } from "../../redux/auth/selectors";
+import { useEffect } from "react";
 
 export const RegistrationForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();  
   const navigate = useNavigate();  
-  const isError = useSelector(selectIsError);
+  // const isError = useSelector(selectIsError);
+
+  // useEffect(() => {
+  //   if (isError) {
+  //     setErrorMessage(isError);
+  //   }
+  // }, [isError]);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();    
@@ -19,14 +26,14 @@ export const RegistrationForm = () => {
     const email = evt.target.elements.email.value;
     const password = evt.target.elements.password.value;
     
-    if (!(email && password && username)) { setErrorMessage('Hello, Mudick!');  return};
+    if (!(email && password && username)) { setErrorMessage([`Hello, ${username || `User`}!`, `All fields must be filled in`]);  return};
     
     // signup({ username: username, email: email, password: password });   
     const resp = await dispatch(signup({ username: username, email: email, password: password }));            
     console.log(resp);
 
-    console.log(isError);
-    if (isError) setErrorMessage(isError);
+    // console.log(isError);
+    // if (isError) setErrorMessage(isError);
 
     // navigate('/profile', { replace: true });
 

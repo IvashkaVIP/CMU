@@ -1,0 +1,26 @@
+// vite.config.js
+import { defineConfig } from "file:///E:/Program%20Files/GitRep/CMU/node_modules/vite/dist/node/index.js";
+import react from "file:///E:/Program%20Files/GitRep/CMU/node_modules/@vitejs/plugin-react-swc/index.mjs";
+import svgr from "file:///E:/Program%20Files/GitRep/CMU/node_modules/vite-plugin-svgr/dist/index.js";
+var vite_config_default = defineConfig({
+  plugins: [react(), svgr()],
+  build: {
+    rollupOptions: {
+      external: ["redux-persist/integration/react"]
+      // Попробуйте явно указать модуль
+    }
+  },
+  resolve: {
+    alias: {
+      src: "/src",
+      components: "/src/components",
+      pages: "/src/pages",
+      assets: "/src/assets"
+    }
+  },
+  base: "/CMU/"
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJFOlxcXFxQcm9ncmFtIEZpbGVzXFxcXEdpdFJlcFxcXFxDTVVcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfZmlsZW5hbWUgPSBcIkU6XFxcXFByb2dyYW0gRmlsZXNcXFxcR2l0UmVwXFxcXENNVVxcXFx2aXRlLmNvbmZpZy5qc1wiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9pbXBvcnRfbWV0YV91cmwgPSBcImZpbGU6Ly8vRTovUHJvZ3JhbSUyMEZpbGVzL0dpdFJlcC9DTVUvdml0ZS5jb25maWcuanNcIjtpbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tICd2aXRlJztcclxuaW1wb3J0IHJlYWN0IGZyb20gJ0B2aXRlanMvcGx1Z2luLXJlYWN0LXN3Yyc7XHJcbmltcG9ydCBzdmdyIGZyb20gJ3ZpdGUtcGx1Z2luLXN2Z3InO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHtcclxuICBwbHVnaW5zOiBbcmVhY3QoKSwgc3ZncigpXSxcclxuICBidWlsZDoge1xyXG4gICAgcm9sbHVwT3B0aW9uczoge1xyXG4gICAgICBleHRlcm5hbDogWydyZWR1eC1wZXJzaXN0L2ludGVncmF0aW9uL3JlYWN0J10sIC8vIFx1MDQxRlx1MDQzRVx1MDQzRlx1MDQ0MFx1MDQzRVx1MDQzMVx1MDQ0M1x1MDQzOVx1MDQ0Mlx1MDQzNSBcdTA0NEZcdTA0MzJcdTA0M0RcdTA0M0UgXHUwNDQzXHUwNDNBXHUwNDMwXHUwNDM3XHUwNDMwXHUwNDQyXHUwNDRDIFx1MDQzQ1x1MDQzRVx1MDQzNFx1MDQ0M1x1MDQzQlx1MDQ0Q1xyXG4gICAgfSxcclxuICB9LFxyXG4gIHJlc29sdmU6IHtcclxuICAgIGFsaWFzOiB7XHJcbiAgICAgIHNyYzogJy9zcmMnLFxyXG4gICAgICBjb21wb25lbnRzOiAnL3NyYy9jb21wb25lbnRzJyxcclxuICAgICAgcGFnZXM6ICcvc3JjL3BhZ2VzJyxcclxuICAgICAgYXNzZXRzOiAnL3NyYy9hc3NldHMnLFxyXG4gICAgfSxcclxuICB9LFxyXG4gIGJhc2U6ICcvQ01VLycsXHJcbn0pO1xyXG4iXSwKICAibWFwcGluZ3MiOiAiO0FBQTZRLFNBQVMsb0JBQW9CO0FBQzFTLE9BQU8sV0FBVztBQUNsQixPQUFPLFVBQVU7QUFFakIsSUFBTyxzQkFBUSxhQUFhO0FBQUEsRUFDMUIsU0FBUyxDQUFDLE1BQU0sR0FBRyxLQUFLLENBQUM7QUFBQSxFQUN6QixPQUFPO0FBQUEsSUFDTCxlQUFlO0FBQUEsTUFDYixVQUFVLENBQUMsaUNBQWlDO0FBQUE7QUFBQSxJQUM5QztBQUFBLEVBQ0Y7QUFBQSxFQUNBLFNBQVM7QUFBQSxJQUNQLE9BQU87QUFBQSxNQUNMLEtBQUs7QUFBQSxNQUNMLFlBQVk7QUFBQSxNQUNaLE9BQU87QUFBQSxNQUNQLFFBQVE7QUFBQSxJQUNWO0FBQUEsRUFDRjtBQUFBLEVBQ0EsTUFBTTtBQUNSLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==

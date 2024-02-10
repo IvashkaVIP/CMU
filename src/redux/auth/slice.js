@@ -12,6 +12,11 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    resetError(state) {
+      state.isError = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(signup.rejected, (state, action) => {        
@@ -52,5 +57,6 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { resetError } = authSlice.actions;
 
 
