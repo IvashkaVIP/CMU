@@ -3,7 +3,7 @@ import { selectUser } from "../../redux/auth/selectors";
 import { shadow } from "../../GlobalStyles";
 
 export const MainPage = () => {
-    const user = useSelector(selectUser);
+    const user = useSelector(selectUser) || `User`;
     console.log(user);
 
     return (
