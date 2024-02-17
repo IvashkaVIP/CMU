@@ -4,8 +4,10 @@ import { Header } from '../components/Header/Header';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Error } from './ServicesMessages/Error';
 import { Message } from './ServicesMessages/Message';
+import { SingleButton } from './Button/Button';
 
 export {
+  SingleButton,
   SignupLoginButtons,
   LoginForm,
   RegistrationForm,

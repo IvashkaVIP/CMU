@@ -1,4 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from './redux/auth/operations';
 import {SharedLayout} from 'components';
 import { HomePage, MainPage, ProfilePage, FirstPage, SecondPage, HalfPage, ErrorPage } from 'pages';
 import { AppWrapper } from './App.styled';
@@ -6,7 +9,12 @@ import { AppWrapper } from './App.styled';
 // const test = import.meta.env.VITE_API_TEST;
 
 function App() {
-  // console.log(test);
+   const dispatch = useDispatch();   
+
+  //  useEffect(() => {
+  //    dispatch(refreshUser());
+  //  }, [dispatch]);
+  
   return (
     <AppWrapper>
       <Routes>

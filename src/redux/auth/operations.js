@@ -52,7 +52,7 @@ export const logOut = createAsyncThunk(
   'api/auth/logout',
   async (_, thunkAPI) => {
     try {
-      await axios.post('api/auth/logout');      
+      await axios.patch(`${BASE_URL}auth/logout`);      
       delete axios.defaults.headers.common.Authorization;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -63,7 +63,7 @@ export const logOut = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    // Reading the token from the state via getState()
+    
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
@@ -73,7 +73,7 @@ export const refreshUser = createAsyncThunk(
 
     try {      
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/me');
+      const res = await axios.get(`${BASE_URL}auth/refresh_token`);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

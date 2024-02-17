@@ -1,5 +1,5 @@
-import {Btn} from "./Button.styled"
+import { Btn } from './Button.styled';
 
-export const Button = ({ children }) => {
-    return <Btn></Btn>
-}
+export const SingleButton = ({ children, handleClick }) => {
+  return <Btn onClick={() => handleClick()}>{children}</Btn>;
+};

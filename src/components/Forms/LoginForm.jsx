@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { Form, Input, Button } from "./Forms.styled";
+import { useState } from 'react';
+import { Form, Input, Button } from './Forms.styled';
 // import { login } from "../../utilities/apiservice";
-import { logIn } from "../../redux/auth/operations";
-import { Error } from "../index";
-import { useDispatch } from "react-redux";
+import { logIn } from '../../redux/auth/operations';
+import { Error } from '../index';
+import { useDispatch } from 'react-redux';
 
 export const LoginForm = () => {
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = async (evt) => {
@@ -14,9 +14,15 @@ export const LoginForm = () => {
     const loginValue = evt.target.elements.login.value;
     const password = evt.target.elements.password.value;
 
-    if (!(loginValue && password)) {setErrorMessage("Hello, Mudick!"); return}    
- 
- dispatch(logIn({ username: loginValue, password: password }));
+    if (!(loginValue && password)) {
+      setErrorMessage('Hello, Mudick!');
+      return;
+    }
+
+    const resp = await dispatch(
+      logIn({ username: loginValue, password: password })
+    );
+    console.log('Login: ', resp);
   };
 
   return (

@@ -41,11 +41,19 @@ export const RegistrationForm = () => {
       return;
     }
 
+    if (username.length < 6) {
+      setErrorMessage([
+        `Hello, ${username || `User`}!`,
+        `the username must be at least 6 characters long`,
+      ]);
+      return;
+    }
+
     // signup({ username: username, email: email, password: password });
     const resp = await dispatch(
       signup({ username: username, email: email, password: password })
     );
-    console.log(resp);
+    console.log("Reg : ", resp);
     if (resp.payload.code) {
       setErrorMessage([`Error`, resp.payload.code, resp.payload.message]);
       return;
