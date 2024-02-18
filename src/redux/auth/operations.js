@@ -16,11 +16,10 @@ export const signup = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       });      
-      setAuthHeader(res.data.token);
-      // console.log(res);
+      // setAuthHeader(res.data.access_token);
+      console.log(res.data);
       return res.data; 
-    } catch (error) {
-      
+    } catch (error) {      
       // console.log(error.response.data); // Объект ответа сервера
       // console.log(error.response.status); // Код состояния HTTP      
       
@@ -40,7 +39,7 @@ export const logIn = createAsyncThunk(
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
-      setAuthHeader(res.data.token);
+      setAuthHeader(res.data.access_token);      
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -49,7 +48,7 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk(
-  'api/auth/logout',
+  'auth/logout',
   async (_, thunkAPI) => {
     try {
       await axios.patch(`${BASE_URL}auth/logout`);      
