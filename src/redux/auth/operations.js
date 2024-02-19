@@ -20,9 +20,7 @@ export const signup = createAsyncThunk(
       console.log(res.data);
       return res.data; 
     } catch (error) {      
-      // console.log(error.response.data); // Объект ответа сервера
-      // console.log(error.response.status); // Код состояния HTTP      
-      
+            
       return thunkAPI.rejectWithValue(
         {code: error.response.status, message: error.response?.data?.detail || 'Unknown error'}
       );

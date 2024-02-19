@@ -15,11 +15,15 @@ export const authSlice = createSlice({
   reducers: {
     resetError(state) {
       state.isError = null;
-    }
+    },
+    resetUser(state) {
+      state.isLoggedIn = false;
+      state.user = null;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signup.rejected, (state, action) => {        
+      .addCase(signup.rejected, (state, action) => {
         state.isError = action.payload;
       })
       .addCase(signup.fulfilled, (state, action) => {
@@ -58,6 +62,6 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { resetError } = authSlice.actions;
+export const { resetError, resetUser } = authSlice.actions;
 
 

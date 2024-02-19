@@ -1,5 +1,5 @@
 import { SignupLoginButtons } from '../components/DualButton/DualButton';
-import { LoginForm, RegistrationForm } from '../components/Forms';
+import { LoginForm, RegistrationForm, ProfileForm } from '../components/Forms';
 import { Header } from '../components/Header/Header';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Error } from './ServicesMessages/Error';
@@ -11,6 +11,7 @@ export {
   SignupLoginButtons,
   LoginForm,
   RegistrationForm,
+  ProfileForm,
   Header,
   SharedLayout,
   Error,

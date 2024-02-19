@@ -1,4 +1,5 @@
 import { LoginForm} from "./LoginForm";
-import {RegistrationForm } from "./RegistrationForm";
+import { RegistrationForm } from "./RegistrationForm";
+import { ProfileForm } from "./ProfileForm";
 
-export {LoginForm, RegistrationForm}
+export {LoginForm, RegistrationForm, ProfileForm }
