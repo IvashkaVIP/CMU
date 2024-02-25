@@ -26,7 +26,8 @@ export const authSlice = createSlice({
       .addCase(signup.rejected, (state, action) => {
         state.isError = action.payload;
       })
-      .addCase(signup.fulfilled, (state, action) => {
+      .addCase(signup.fulfilled, (state, action) => {  
+        console.log(action);
         state.user.email = action.meta.arg.username;
         state.user.name = action.username;
         state.token = action.payload.access_token;
