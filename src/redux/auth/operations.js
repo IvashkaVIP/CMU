@@ -16,8 +16,7 @@ export const signup = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       });      
-      // setAuthHeader(res.data.access_token);
-      console.log(res.data);
+      // setAuthHeader(res.data.access_token);      
       return res.data; 
     } catch (error) {      
             

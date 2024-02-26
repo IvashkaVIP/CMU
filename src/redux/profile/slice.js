@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    nickname: '',
-    age: null,
-    country: '',
-    avatar: '',
-    
+  nickname: '',
+  age: null,
+  country: '',
+  phone: '',
+  avatar: '',
 };
 
 export const profileSlice = createSlice({
@@ -16,6 +16,7 @@ export const profileSlice = createSlice({
     setAge: (_, action) => action.profile.age,
     setCountry: (_, action) => action.profile.country,
     setAvatar: (_, action) => action.profile.avatar,
+    setPhone: (_, action) => action.profile.phone,
   },
 });
 

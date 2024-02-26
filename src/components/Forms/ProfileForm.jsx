@@ -1,17 +1,24 @@
 import { Form, Input, Button } from "./Forms.styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Error } from "../ServicesMessages/Error";
+import { selectUserName, selectUserPass } from "../../redux/auth/selectors";
+import { logIn } from '../../redux/auth/operations';
+
 
 export const ProfileForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
+  const username = useSelector(selectUserName);
+  const password = useSelector(selectUserPass);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const isError = useSelector(selectIsError);
 
+  console.log(password);
+
 const handleSubmit = async (evt) => {
-  evt.preventDefault();
+  evt.preventDefault();  
   const field =  evt.target.elements ; 
   const nickname = field.nickname.value;
   const age = field.age.value;
@@ -35,6 +42,12 @@ const handleSubmit = async (evt) => {
     ]);
     return;
   }  
+
+   const resp = await dispatch(
+      logIn({ username, password })
+    );
+    console.log('Login in Profile : ', resp);
+  
 
   // signup({ username: username, email: email, password: password });
   // const resp = await dispatch(

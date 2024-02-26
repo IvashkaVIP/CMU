@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { signup, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, pass: ''},
   token: null,
   isLoggedIn: false,
   isError: null,
@@ -26,17 +26,18 @@ export const authSlice = createSlice({
       .addCase(signup.rejected, (state, action) => {
         state.isError = action.payload;
       })
-      .addCase(signup.fulfilled, (state, action) => {  
-        console.log(action);
-        state.user.email = action.meta.arg.username;
-        state.user.name = action.username;
-        state.token = action.payload.access_token;
+      .addCase(signup.fulfilled, (state, action) => {          
+        console.log(' Login : email  ', action.payload.user.email);
+        state.user.email = action.payload.user.email;
+        state.user.name = action.payload.user.username;
+        state.user.pass = action.meta.arg.password;
+        // state.token = action.payload.access_token;
         state.isLoggedIn = true;
         state.isError = null;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user.email = action.meta.arg.username;
-        state.user.name = action.payload.username;
+        state.user.name = action.payload.username;        
         state.token = action.payload.access_token;
         state.isLoggedIn = true;
         state.isError = null;

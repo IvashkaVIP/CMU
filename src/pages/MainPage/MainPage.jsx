@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
+import { selectUserName } from "../../redux/auth/selectors";
 import { shadow } from "../../GlobalStyles";
 import { SingleButton } from "../../components";
 import { logOut } from "../../redux/auth/operations";
@@ -7,8 +7,7 @@ import { logOut } from "../../redux/auth/operations";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser) || `User`;
-  console.log(user);
+  const user = useSelector(selectUserName) || `User`;  
   
   const handleClick = () => {
     dispatch(logOut())
