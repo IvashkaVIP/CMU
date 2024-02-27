@@ -18,8 +18,10 @@ export const signup = createAsyncThunk(
       });      
       // setAuthHeader(res.data.access_token);      
       return res.data; 
-    } catch (error) {      
-            
+    } catch (error) {     
+      
+      console.log("Reg Catch : ", error.message)            
+
       return thunkAPI.rejectWithValue(
         {code: error.response.status, message: error.response?.data?.detail || 'Unknown error'}
       );
@@ -39,6 +41,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.access_token);      
       return res.data;
     } catch (error) {
+      console.log('Login Catch : ', error.message);            
       return thunkAPI.rejectWithValue(error.message);
     }
   }

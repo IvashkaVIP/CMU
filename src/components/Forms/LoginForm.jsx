@@ -19,10 +19,12 @@ export const LoginForm = () => {
       return;
     }
 
-    const resp = await dispatch(
-      logIn({ username: loginValue, password: password })
-    );
-    console.log('Login: ', resp);
+    try {
+      const resp = await dispatch(
+        logIn({ username: loginValue, password: password })
+      );
+    } catch(error)
+    {console.log('Login Form Error: ', error.message)}
   };
 
   return (
