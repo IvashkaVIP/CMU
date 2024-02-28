@@ -17,14 +17,16 @@ export const signup = createAsyncThunk(
         },
       });      
       // setAuthHeader(res.data.access_token);      
+      console.log('operations Reg Try : ', res.data);            
       return res.data; 
     } catch (error) {     
       
-      console.log("Reg Catch : ", error.message)            
+      console.log("operations Reg Catch : ", error.message)            
 
-      return thunkAPI.rejectWithValue(
-        {code: error.response.status, message: error.response?.data?.detail || 'Unknown error'}
-      );
+      return thunkAPI.rejectWithValue({
+        code: error.response.status || 'undefined code',
+        message: error.response?.data?.detail || 'unknown error',
+      });
     }
   }
 );
@@ -39,10 +41,19 @@ export const logIn = createAsyncThunk(
         },
       });
       setAuthHeader(res.data.access_token);      
+      console.log("operations Login Try: ", res)
       return res.data;
     } catch (error) {
-      console.log('Login Catch : ', error.message);            
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(
+        'operations Login Catch : ',
+        error.message,
+        error.response.status,
+        error.response.data.detail
+      );            
+      return thunkAPI.rejectWithValue({
+        code: error.response.status || 'undefined code',
+        message: error.response?.data?.detail || 'unknown error',
+      });
     }
   }
 );

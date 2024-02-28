@@ -13,9 +13,7 @@ export const ProfileForm = () => {
   const password = useSelector(selectUserPass);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const isError = useSelector(selectIsError);
-
-  console.log(password);
+  // const isError = useSelector(selectIsError);  
 
 const handleSubmit = async (evt) => {
   evt.preventDefault();  
@@ -46,7 +44,7 @@ const handleSubmit = async (evt) => {
    const resp = await dispatch(
       logIn({ username, password })
     );
-    console.log('Login in Profile : ', resp);
+    console.log('Login Profile : ', resp);
   
 
   // signup({ username: username, email: email, password: password });

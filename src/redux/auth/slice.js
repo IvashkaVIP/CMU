@@ -4,6 +4,7 @@ import { signup, logIn, logOut, refreshUser } from './operations';
 const initialState = {
   user: { name: null, email: null, pass: ''},
   token: null,
+  profile: null,
   isLoggedIn: false,
   isError: null,
   isRefreshing: false,
@@ -16,9 +17,8 @@ export const authSlice = createSlice({
     resetError(state) {
       state.isError = null;
     },
-    resetUser(state) {
-      state.isLoggedIn = false;
-      state.user = null;
+    resetUser(state) {      
+      state = initialState;
     },
   },
   extraReducers: (builder) => {
@@ -26,8 +26,8 @@ export const authSlice = createSlice({
       .addCase(signup.rejected, (state, action) => {
         state.isError = action.payload;
       })
-      .addCase(signup.fulfilled, (state, action) => {          
-        console.log(' Login : email  ', action.payload.user.email);
+      .addCase(signup.fulfilled, (state, action) => {
+        console.log(' Slice: signup : email  ', action.payload.user.email);
         state.user.email = action.payload.user.email;
         state.user.name = action.payload.user.username;
         state.user.pass = action.meta.arg.password;
@@ -37,10 +37,19 @@ export const authSlice = createSlice({
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user.email = action.meta.arg.username;
-        state.user.name = action.payload.username;        
+        state.user.name = action.payload.username;
         state.token = action.payload.access_token;
+        state.profile = action.payload.profile;
         state.isLoggedIn = true;
         state.isError = null;
+      })
+      .addCase(logIn.rejected, (state, action) => {
+        console.log("Slice login : ", action.payload)
+        // state.user.email = action.meta.arg.username;
+        // state.user.name = action.payload.username;
+        // state.token = action.payload.access_token;
+        // state.isLoggedIn = true;
+        state.isError = action.payload;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = { name: null, email: null };

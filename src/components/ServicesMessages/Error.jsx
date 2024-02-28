@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 export const Error= ({ resetError, errorMessage })=>{
     
+console.log("Error : ")
+
   const [isVisible, setIsVisible] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
