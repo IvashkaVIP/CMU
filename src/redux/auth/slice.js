@@ -27,7 +27,7 @@ export const authSlice = createSlice({
         state.isError = action.payload;
       })
       .addCase(signup.fulfilled, (state, action) => {
-        console.log(' Slice: signup : email  ', action.payload.user.email);
+        // console.log(' Slice: signup : email  ', action.payload.user.email);
         state.user.email = action.payload.user.email;
         state.user.name = action.payload.user.username;
         state.user.pass = action.meta.arg.password;
@@ -35,16 +35,16 @@ export const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isError = null;
       })
-      .addCase(logIn.fulfilled, (state, action) => {
+      .addCase(logIn.fulfilled, (state, action) => {        
         state.user.email = action.meta.arg.username;
         state.user.name = action.payload.username;
+        state.user.pass = action.meta.arg.password;
         state.token = action.payload.access_token;
         state.profile = action.payload.profile;
         state.isLoggedIn = true;
         state.isError = null;
       })
-      .addCase(logIn.rejected, (state, action) => {
-        console.log("Slice login : ", action.payload)
+      .addCase(logIn.rejected, (state, action) => {        
         // state.user.email = action.meta.arg.username;
         // state.user.name = action.payload.username;
         // state.token = action.payload.access_token;

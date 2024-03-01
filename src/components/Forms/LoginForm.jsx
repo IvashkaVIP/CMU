@@ -4,17 +4,16 @@ import { Form, Input, Button } from './Forms.styled';
 import { logIn } from '../../redux/auth/operations';
 import { Error } from '../index';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { selectIsError, selectIsToken, selectIsProfile } from '../../redux/auth/selectors';
+// import { useNavigate } from 'react-router-dom';
+import { selectIsError, selectIsToken } from '../../redux/auth/selectors';
 import { resetError } from '../../redux/auth/slice';
 
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const loginError = useSelector(selectIsError);
   const isToken = useSelector(selectIsToken);
-  const profile = useSelector(selectIsProfile);
 
   useEffect(() => {
     if (loginError) {
@@ -22,13 +21,6 @@ export const LoginForm = () => {
       dispatch(resetError());
     }
   }, [loginError, dispatch]);
-
-  useEffect(() => {
-    console.log("useEffect isToken : ", isToken);
-  if (isToken && !profile) {
-    navigate('/profile');
-  }
-}, [isToken, profile, navigate]);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -43,6 +35,7 @@ export const LoginForm = () => {
       return;
     }
     try {
+      
       const resp = await dispatch(
         logIn({ username: loginValue, password: password })
       );
@@ -54,7 +47,7 @@ export const LoginForm = () => {
   };
 
   // console.log('LoginForm isError : ', loginError);
-  // console.log('errorMessage: ', errorMessage);
+  // console.log('errorMessage: ', errorMessage);  
 
   return (
     <Form onSubmit={handleSubmit}>

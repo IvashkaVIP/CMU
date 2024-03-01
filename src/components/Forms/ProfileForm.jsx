@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Error } from "../ServicesMessages/Error";
-import { selectUserName, selectUserPass } from "../../redux/auth/selectors";
+import { selectUserMail, selectUserName, selectUserPass } from "../../redux/auth/selectors";
 import { logIn } from '../../redux/auth/operations';
 
 
 export const ProfileForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const username = useSelector(selectUserName);
+  const email = useSelector(selectUserMail);
   const password = useSelector(selectUserPass);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const isError = useSelector(selectIsError);  
 
 const handleSubmit = async (evt) => {
-  evt.preventDefault();  
+  evt.preventDefault();    
   const field =  evt.target.elements ; 
   const nickname = field.nickname.value;
   const age = field.age.value;
@@ -41,11 +41,21 @@ const handleSubmit = async (evt) => {
     return;
   }  
 
-   const resp = await dispatch(
-      logIn({ username, password })
-    );
-    console.log('Login Profile : ', resp);
+  console.log(email, password);
+
+  try {
+    const resp = await dispatch(
+      logIn({ username: email, password: password })
+
+    );    
+    console.log('ProfileForm Login : ', resp.payload);    
+    if (resp.payload.code) {
+      setErrorMessage([`Error`, resp.payload.code, resp.payload.message]);
+      return;
+    } 
+  } catch (error) {console.log('ProfileForm Error: ', error.message);}
   
+
 
   // signup({ username: username, email: email, password: password });
   // const resp = await dispatch(

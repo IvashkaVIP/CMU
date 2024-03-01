@@ -6,13 +6,14 @@ import {
   SignupLoginButtons,
 } from '../../components';
 import { Container } from './HomePage.styled';
-import {selectIsLoggedIn} from "../../redux/auth/selectors"
-import { MainPage } from '../MainPage/MainPage';
+import {selectIsLoggedIn, selectIsProfile} from "../../redux/auth/selectors"
+import { MainPage, ProfilePage } from '../index'
 // import example from '../../assets/example.png';
 
 export const HomePage = () => {
   const [toLogin, setToLogin] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);  
+  const isProfile = useSelector(selectIsProfile);  
 
   return (
     <Container>
@@ -28,7 +29,7 @@ export const HomePage = () => {
         }}
       >
         {isLoggedIn ? (
-          <MainPage />
+          isProfile ? <MainPage /> : <ProfilePage />
         ) : (
           <>
             <SignupLoginButtons toLogin={toLogin} setToLogin={setToLogin} />
