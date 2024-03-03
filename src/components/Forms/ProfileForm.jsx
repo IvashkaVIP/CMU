@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Error } from "../ServicesMessages/Error";
 import { selectUserMail, selectUserName, selectUserPass } from "../../redux/auth/selectors";
-import { logIn } from '../../redux/auth/operations';
+import { createProfile, logIn } from '../../redux/auth/operations';
 
 
 export const ProfileForm = () => {
@@ -53,7 +53,11 @@ const handleSubmit = async (evt) => {
       setErrorMessage([`Error`, resp.payload.code, resp.payload.message]);
       return;
     } 
-  } catch (error) {console.log('ProfileForm Error: ', error.message);}
+  } catch (error) { console.log('ProfileForm Error: ', error.message); }
+  
+  try {
+    await dispatch(createProfile({nickname, country, age, phone, avatar }))
+  }catch(error) {}
   
 
 

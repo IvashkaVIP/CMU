@@ -90,3 +90,33 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const createProfile = createAsyncThunk(
+  'auth/createProfile',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL}profiles/create-profile`,
+        credentials,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );      
+      console.log('operations creatProfile Try: ', res);
+      return res.data;
+    } catch (error) {
+      console.log(
+        'operations creatProfile Catch : ',
+        error.message,
+        error.response.status,
+        error.response.data.detail
+      );
+      return thunkAPI.rejectWithValue({
+        code: error.response.status || 'undefined code',
+        message: error.response?.data?.detail || 'unknown error',
+      });
+    }
+  }
+);

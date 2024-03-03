@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup, logIn, logOut, refreshUser } from './operations';
+import { signup, logIn, logOut, refreshUser, createProfile } from './operations';
 
 const initialState = {
   user: { name: null, email: null, pass: ''},
@@ -35,7 +35,7 @@ export const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isError = null;
       })
-      .addCase(logIn.fulfilled, (state, action) => {        
+      .addCase(logIn.fulfilled, (state, action) => {
         state.user.email = action.meta.arg.username;
         state.user.name = action.payload.username;
         state.user.pass = action.meta.arg.password;
@@ -44,7 +44,7 @@ export const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isError = null;
       })
-      .addCase(logIn.rejected, (state, action) => {        
+      .addCase(logIn.rejected, (state, action) => {
         // state.user.email = action.meta.arg.username;
         // state.user.name = action.payload.username;
         // state.token = action.payload.access_token;
@@ -68,7 +68,11 @@ export const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.isError = action.payload;
-      });
+      })
+      .addCase(createProfile.fulfilled, (state) => {
+        state.profile = true;        
+      })
+      ;
   },
 });
 
