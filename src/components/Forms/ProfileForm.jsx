@@ -1,9 +1,9 @@
 import { Form, Input, Button } from "./Forms.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Error } from "../ServicesMessages/Error";
-import { selectUserMail, selectUserName, selectUserPass } from "../../redux/auth/selectors";
+import { selectIsLoggedIn, selectUserMail, selectUserName, selectUserPass } from "../../redux/auth/selectors";
 import { createProfile, logIn } from '../../redux/auth/operations';
 
 
@@ -11,9 +11,12 @@ export const ProfileForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const email = useSelector(selectUserMail);
   const password = useSelector(selectUserPass);
+  const isLogged = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const isError = useSelector(selectIsError);  
+  // const isError = useSelector(selectIsError);
+
+  useEffect(()=>{if(!isLogged) navigate ('/')},[isLogged, navigate])
 
 const handleSubmit = async (evt) => {
   evt.preventDefault();    
@@ -22,6 +25,7 @@ const handleSubmit = async (evt) => {
   const age = field.age.value;
   const country = field.country.value;
   const phone = field.phone.value;
+  const avatarFile = field.avatar.files[0] || '';
 
   console.log(nickname, age, country, phone )
 
@@ -56,8 +60,10 @@ const handleSubmit = async (evt) => {
   } catch (error) { console.log('ProfileForm Error: ', error.message); }
   
   try {
-    await dispatch(createProfile({nickname, country, age, phone, avatar }))
-  }catch(error) {}
+    await dispatch(createProfile({nickname, country, age, phone, avatar: avatarFile }))
+  } catch (error) {
+    console.log("ProfileForm creatProfile: ", error.message, error.status);
+  }
   
 
 

@@ -1,5 +1,7 @@
 import { } from "./ProfilePage.styled"
 
+import { Link } from 'react-router-dom';
+
 import { SingleButton, ProfileForm } from "../../components";
 import { resetUser } from "../../redux/auth/slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +14,8 @@ export const ProfilePage = () => {
   const isToken = useSelector(selectIsToken);
   const handleClick = () => {
     dispatch(resetUser());
-    navigate('/', { replace: true });
+    navigate('/');
+
   };
     
     return (
@@ -28,7 +31,7 @@ export const ProfilePage = () => {
         <br />
         <ProfileForm />
         <br />
-        <SingleButton handleClick={handleClick}>Back</SingleButton>
+        <SingleButton handleClick={handleClick}>Back</SingleButton>        
       </div>
     );
 }

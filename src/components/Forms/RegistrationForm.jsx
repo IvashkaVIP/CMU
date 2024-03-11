@@ -7,6 +7,7 @@ import { signup } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import { selectIsError } from '../../redux/auth/selectors';
 import { useEffect } from 'react';
+import { resetError } from '../../redux/auth/slice';
 
 export const RegistrationForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -55,7 +56,8 @@ export const RegistrationForm = () => {
     );
     console.log("Reg : ", resp);
     if (resp.payload.code) {
-      setErrorMessage([`Error`, resp.payload.code, resp.payload.message]);
+      setErrorMessage([`Error  ${resp.payload.code}`, resp.payload.message]);
+      dispatch(resetError());
       return;
     } 
 

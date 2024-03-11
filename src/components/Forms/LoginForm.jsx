@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import { selectIsError, selectIsToken } from '../../redux/auth/selectors';
 import { resetError } from '../../redux/auth/slice';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const loginError = useSelector(selectIsError);
   const isToken = useSelector(selectIsToken);
 
@@ -41,8 +42,9 @@ export const LoginForm = () => {
       );
       console.log('LoginForm Try: ');
       console.log('Login isToken : ', isToken);
+      if (!isToken) navigate('/profile');
     } catch (error) {
-      console.log('Login Form Error: ', error.message);
+      console.log('Login Form Error: ', error.message);      
     }
   };
 

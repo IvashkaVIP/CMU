@@ -18,7 +18,12 @@ export const authSlice = createSlice({
       state.isError = null;
     },
     resetUser(state) {      
-      state = initialState;
+      state.user = { name: null, email: null, pass: '' };
+      state.token = null;
+      state.profile = null;
+      state.isLoggedIn = false;
+      state.isError = null;
+      state.isRefreshing = false;
     },
   },
   extraReducers: (builder) => {

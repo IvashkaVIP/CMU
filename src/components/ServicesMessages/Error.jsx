@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 
 export const Error= ({ resetError, errorMessage })=>{
     
-console.log("Error : ")
+  console.log("Error : ", resetError, errorMessage);
 
   const [isVisible, setIsVisible] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-      resetError();
+      resetError();      
     }, 3000);
 
     return () => clearTimeout(timer);
