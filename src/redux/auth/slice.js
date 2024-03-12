@@ -14,6 +14,9 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setIsLoggedIn(state, action) {      
+      state.isLoggedIn = action.payload;
+    },
     resetError(state) {
       state.isError = null;
     },
@@ -53,7 +56,7 @@ export const authSlice = createSlice({
         // state.user.email = action.meta.arg.username;
         // state.user.name = action.payload.username;
         // state.token = action.payload.access_token;
-        // state.isLoggedIn = true;
+        // state.isLoggedIn = true;        
         state.isError = action.payload;
       })
       .addCase(logOut.fulfilled, (state) => {
@@ -82,6 +85,6 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { resetError, resetUser } = authSlice.actions;
+export const { setIsLoggedIn, resetError, resetUser } = authSlice.actions;
 
 

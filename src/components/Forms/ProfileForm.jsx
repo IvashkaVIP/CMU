@@ -54,7 +54,7 @@ const handleSubmit = async (evt) => {
     );    
     console.log('ProfileForm Login : ', resp.payload);    
     if (resp.payload.code) {
-      setErrorMessage([`Error`, resp.payload.code, resp.payload.message]);
+      setErrorMessage([`Error   ${resp.payload.code}`, resp.payload.message]);
       return;
     } 
   } catch (error) { console.log('ProfileForm Error: ', error.message); }

@@ -6,7 +6,7 @@ import { Error } from '../index';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import { selectIsError, selectIsToken } from '../../redux/auth/selectors';
-import { resetError } from '../../redux/auth/slice';
+import { resetError, setIsLoggedIn } from '../../redux/auth/slice';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
@@ -36,20 +36,27 @@ export const LoginForm = () => {
       return;
     }
     try {
-      
       const resp = await dispatch(
         logIn({ username: loginValue, password: password })
       );
-      console.log('LoginForm Try: ');
-      console.log('Login isToken : ', isToken);
+      // console.log('LoginForm Try: ', resp);
+      // console.log(resp.payload.code, resp.payload.message);
+      if (        
+        resp.payload.code === 401 &&
+        resp.payload.message === 'Email not confirmed'
+      )
+      { console.log(resp.payload.code, resp.payload.message);
+        dispatch(setIsLoggedIn(true));
+      }
+
       if (!isToken) navigate('/profile');
     } catch (error) {
-      console.log('Login Form Error: ', error.message);      
+      console.log('Login Form Error: ', error.message);
     }
   };
 
   // console.log('LoginForm isError : ', loginError);
-  // console.log('errorMessage: ', errorMessage);  
+  // console.log('errorMessage: ', errorMessage);
 
   return (
     <Form onSubmit={handleSubmit}>
