@@ -41,17 +41,19 @@ export const LoginForm = () => {
       );
       // console.log('LoginForm Try: ', resp);
       // console.log(resp.payload.code, resp.payload.message);
-      if (        
+      if (
         resp.payload.code === 401 &&
         resp.payload.message === 'Email not confirmed'
-      )
-      { console.log(resp.payload.code, resp.payload.message);
+      ) {
+        console.log(resp.payload.code, resp.payload.message);
         dispatch(setIsLoggedIn(true));
       }
 
       if (!isToken) navigate('/profile');
     } catch (error) {
       console.log('Login Form Error: ', error.message);
+      setErrorMessage([`something's wrong on the server`, `please try again`]);
+      return;
     }
   };
 

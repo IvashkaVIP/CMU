@@ -60,6 +60,7 @@ const handleSubmit = async (evt) => {
   } catch (error) { console.log('ProfileForm Error: ', error.message); }
   
   try {
+    console.log({ nickname, country, age, phone, avatar: avatarFile });
     await dispatch(createProfile({nickname, country, age, phone, avatar: avatarFile }))
   } catch (error) {
     console.log("ProfileForm creatProfile: ", error.message, error.status);
