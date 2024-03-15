@@ -21,7 +21,8 @@ export const signup = createAsyncThunk(
       return res.data; 
     } catch (error) {     
       
-      console.log("operations Reg Catch : ", error.message)            
+      // console.log("operations Reg Catch : ", error.message)            
+      console.log('operations Reg Catch : ', error);            
 
       return thunkAPI.rejectWithValue({
         code: error.response.status || 'undefined code',
