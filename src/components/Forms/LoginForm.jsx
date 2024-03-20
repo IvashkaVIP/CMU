@@ -40,13 +40,21 @@ export const LoginForm = () => {
         logIn({ username: loginValue, password: password })
       );
       // console.log('LoginForm Try: ', resp);
-      // console.log(resp.payload.code, resp.payload.message);
+      console.log(resp.payload.code, resp.payload.message);
       if (
         resp.payload.code === 401 &&
         resp.payload.message === 'Email not confirmed'
       ) {
         console.log(resp.payload.code, resp.payload.message);
         dispatch(setIsLoggedIn(true));
+      }
+
+      if (
+        resp.payload.code === 401 &&
+        resp.payload.message !== 'Email not confirmed'
+      ) {        
+        setErrorMessage([`${resp.payload.code}`, resp.payload.message]);
+        return;
       }
 
       if (!isToken) navigate('/profile');
