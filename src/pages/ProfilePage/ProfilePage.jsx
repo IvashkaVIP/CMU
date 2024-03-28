@@ -7,6 +7,7 @@ import { resetUser } from "../../redux/auth/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { selectIsToken } from "../../redux/auth/selectors";
+
 import {
   selectIsLoggedIn,
   selectIsProfile,
@@ -18,14 +19,19 @@ import {
 export const ProfilePage = () => {
   const isLogged = useSelector(selectIsLoggedIn);
   const isProfile = useSelector(selectIsProfile);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const isToken = useSelector(selectIsToken);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();  
+  
   const handleClick = () => {
     dispatch(resetUser());
     navigate('/');
 
   };
+  const handleClickResendMessage = () => {
+    console.log('ResendMessage');
+}
+
 
     useEffect(() => {
       if (!isLogged) {
@@ -40,14 +46,19 @@ export const ProfilePage = () => {
         <br />
         <br />
         {!isToken && (
-          <h2 style={{ marginBottom: '50px' }}>
-            waiting for email confirmation
-          </h2>
+          <>
+            <h2 style={{ marginBottom: '50px', marginBottom: '30px' }}>
+              waiting for email confirmation
+            </h2>
+            <SingleButton style={{marginBottom: '50px'}} handleClick={handleClickResendMessage}>
+              resend message
+            </SingleButton>
+          </>
         )}
         <br />
         <ProfileForm />
         <br />
-        <SingleButton handleClick={handleClick}>Back</SingleButton>        
+        <SingleButton handleClick={handleClick}>Back</SingleButton>
       </div>
     );
 }

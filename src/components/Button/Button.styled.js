@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { shadow } from '../../GlobalStyles';
 
 export const Btn = styled.button`
+  margin-bottom: ${(props)=>props.style ? props.style.marginBottom : 'initial' };
   padding: 10px 20px;
   background-color: var(--normal-button-color);
   color: #ffffff;
